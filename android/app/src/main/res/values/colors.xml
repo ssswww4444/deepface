@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e7729a</color>
+    <color name="colorPrimaryDark">#D81B60</color>
+    <color name="colorAccent">#00574B</color>
+
+    <!-- Colours -->
+    <color name="transparent">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="gray">#666666</color>
+    <color name="light_gray">#bebebe</color>
+    <color name="light_gray_2">#aaaaaa</color>
+    <color name="light_gray_3">#f6f6f6</color>
+    <color name="light_gray_4">#cccccc</color>
+    <color name="green">#00C800</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#2196F3</color>
+
+    <!--  View-specific colours  -->
+    <color name="divider">#e8e3e3</color>
+    <color name="tabcolor">#F1F1F1</color>
+    <color name="toolbar">#F1F1F1</color>
+    <color name="light_gray_btn">@color/light_gray_2</color>
+    <color name="light_gray_btn_bg">@color/light_gray_3</color>
+    <color name="light_gray_btn_bg_highlight">@color/light_gray_4</color>
+    <color name="primary_btn_bg_highlight">@color/colorPrimaryDark</color>
+    <color name="hyperlink">@color/blue</color>
+
+</resources>
