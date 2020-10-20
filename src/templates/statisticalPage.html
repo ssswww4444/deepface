@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% block mainContent %}
+    <div class="container">
+    <h1>General information: </h1>
+        <div class="row">
+            <div style="width: 800px; margin: 5px auto;" class="col-lg-6 col-sm-12">
+                <canvas id="numberOfTotalPrediction" width="8" height="5"></canvas>
+            </div>
+
+            <div style="width: 800px; margin: 5px auto;" class="col-lg-6 col-sm-12">
+                <canvas id="numberOfTotalFeedback" width="8" height="5"></canvas>
+            </div>
+        </div>
+        <br/>
+        <div style="width: 800px; margin: 5px auto;">
+            <canvas id="numberOfPhotoByDate" width="8" height="5"></canvas>
+        </div>
+        <br/>
+        <h1>Age: </h1>
+        <div style="width: 800px; margin: 5px auto">
+            <canvas id="numberOfAgePredictionChart" width="8" height="5"></canvas>
+        </div>
+        <br/>
+        <div style="width: 800px; margin: 5px auto">
+            <canvas id="numberOfAgeFeedbackChart" width="8" height="5"></canvas>
+        </div>
+        <br/>
+        <h1>Gender: </h1>
+        <div style="overflow-x: auto">
+            <div style="width: 800px; margin: 5px auto; overflow-x: auto">
+                <canvas id="numberOfGenderPredictionChart" width="8" height="5"></canvas>
+            </div>
+        </div>
+        <br/>
+        <div style="overflow-x: auto">
+            <div style="width: 800px; margin: 5px auto; overflow-x: auto">
+                <canvas id="numberOfGenderFeedbackChart" width="8" height="5"></canvas>
+            </div>
+        </div>
+        <br/>
+        <h1>Emotion: </h1>
+        <div style="width: 800px; margin: 5px auto">
+            <canvas id="numberOfEmotionPredictionChart" width="8" height="5"></canvas>
+        </div>
+        <br/>
+        <div style="width: 800px; margin: 5px auto">
+            <canvas id="numberOfEmotionFeedbackChart" width="8" height="5"></canvas>
+        </div>
+
+    </div>
+    <script>
+        function generalBackgroundColor(number) {
+            let result = []
+            for (let i = 0; i < number; i++) {
+                let color = "rgba(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")"
+                result.push(color)
+            }
+            return result
+        }
+
+        function drawDoughunt(canvas, data, title) {
+            new Chart(canvas, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        data: Object.values(data),
+                        backgroundColor: ['rgb(255, 164, 128)', 'rgb(40, 143, 56)'],
+                    }]
+                },
+                options: {
+                    title: {display: true, text: title, fontSize: 30},
+                }
+            });
+        }
+
+        function drawLine(canvas, data, title) {
+            new Chart(canvas, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        data: Object.values(data),
+                        label: 'Number',
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }]
+                },
+                options: {
+                    title: {display: true, text: title, fontSize: 30},
+                }
+            });
+        }
+
+        function drawVerticalBar(canvas, data, title) {
+            new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: 'Number',
+                        data: Object.values(data),
+                        backgroundColor:
+                            generalBackgroundColor(Object.keys(data).length),
+                    }]
+                },
+                options: {
+                    title: {display: true, text: title, fontSize: 30},
+                    legend: {display: false},
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 20
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                autoSkip: false,
+                                fontSize: 20
+                            }
+                        }]
+                    },
+                }
+            });
+        }
+
+        function drawVerticalStackBar(canvas, dataA, dataB, title, labels) {
+            new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataA),
+                    datasets: [{
+                        label: labels[0],
+                        data: Object.values(dataA),
+                        backgroundColor:
+                            generalBackgroundColor(1)[0],
+                    }, {
+                        label: labels[1],
+                        data: Object.values(dataB),
+                        backgroundColor:
+                            generalBackgroundColor(1)[0],
+                    }]
+                },
+                options: {
+                    title: {display: true, text: title, fontSize: 30},
+                    legend: {display: true},
+                    scales: {
+                        xAxes: [{
+                            stacked: true, ticks: {
+                                autoSkip: false,
+                                fontSize: 20
+                            }
+                        }],
+                        yAxes: [{
+                            stacked: true, ticks: {
+                                autoSkip: false,
+                                fontSize: 20
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
+        // function drawComparisonBar(canvas, labels, dataA, dataB, title) {
+        //     new Chart(canvas, {
+        //         type: 'bar',
+        //         data: {
+        //             labels: labels,
+        //             datasets: [{
+        //                 label: 'Cat',
+        //                 data: Object.values(dataA),
+        //                 backgroundColor:
+        //                     'rgba(255, 99, 132, 0.2)',
+        //                 order: 1
+        //             },
+        //                 {
+        //                     label: 'Dog',
+        //                     data: Object.values(dataB),
+        //                     type: 'bar',
+        //                     backgroundColor:
+        //                         'rgba(54, 162, 235, 0.2)',
+        //                     order: 2
+        //                 }]
+        //         },
+        //         options: {
+        //             title: {display: true, text: title},
+        //             legend: {display: true},
+        //             scales: {
+        //                 yAxes: [{
+        //                     ticks: {
+        //                         beginAtZero: true,
+        //                     }
+        //                 }]
+        //             },
+        //         }
+        //     });
+        // }
+
+        function getTotalPrediction() {
+            $.get("/api/get-statistical-results", function (response) {
+
+                {#total prediction number#}
+                let ctxForTotalPredictionNumber = document.getElementById('numberOfTotalPrediction').getContext('2d');
+                let totalPredictionNumberData = {
+                    "Total": response['totalNumberOfPrediction']
+                }
+
+                let totalPredictionCount = response['totalNumberOfPrediction']
+                let totalNumberOfPhotoUploaded = response['totalNumberOfPhotoUploaded']
+                drawDoughunt(ctxForTotalPredictionNumber, totalPredictionNumberData, `Total prediction number: ${totalPredictionCount} faces / ${totalNumberOfPhotoUploaded} photos`)
+
+                {#total feedback number#}
+                let ctxForTotalFeedbackNumber = document.getElementById('numberOfTotalFeedback').getContext('2d');
+                let totalFeedbackNumberData = {
+                    "Total": response['totalNumberOfFeedback']
+                }
+
+                let totalFeedbackCount = response['totalNumberOfFeedback']
+                drawDoughunt(ctxForTotalFeedbackNumber, totalFeedbackNumberData, `Total feedback number: ${totalFeedbackCount}`)
+
+                {#number of photo by date#}
+                let ctxForNumberOfPhotoByDate = document.getElementById('numberOfPhotoByDate').getContext('2d');
+                drawLine(ctxForNumberOfPhotoByDate, response['numberOfPhotoByDate'], 'Number of Photos within a week')
+
+                {#age prediction#}
+                let ctxForAgePredictionNumber = document.getElementById('numberOfAgePredictionChart').getContext('2d');
+                drawVerticalBar(ctxForAgePredictionNumber, response['totalNumberOfAgePrediction'], "Age prediction")
+
+                {#age feedback#}
+                let ctxForAgeFeedback = document.getElementById('numberOfAgeFeedbackChart').getContext('2d');
+                drawVerticalStackBar(ctxForAgeFeedback, response['totalNumberOfAgeCorrectFeedback'], response['totalNumberOfAgeWrongFeedback'], "Age feedback", ['Correct', 'Wrong'])
+
+                {#gender prediction#}
+                let ctxForGenderPredictionNumber = document.getElementById('numberOfGenderPredictionChart').getContext('2d');
+                // drawVerticalBar(ctxForGenderPredictionNumber, response['totalNumberOfGenderPrediction'], "Gender prediction")
+                let genderPredictionNumberData = {
+                    "Man": response['totalNumberOfGenderPrediction']['Man'],
+                    "Woman": response['totalNumberOfGenderPrediction']['Woman']
+                }
+                drawDoughunt(ctxForGenderPredictionNumber, genderPredictionNumberData, `Gender prediction`)
+
+                {#gender feedback#}
+                let ctxForGenderFeedback = document.getElementById('numberOfGenderFeedbackChart').getContext('2d');
+                drawVerticalStackBar(ctxForGenderFeedback, response['totalNumberOfGenderCorrectFeedback'], response['totalNumberOfGenderWrongFeedback'], "Gender feedback", ['Correct', 'Wrong'])
+                // let genderFeedbackNumberData = {
+                //     "Correct": response['totalNumberOfGenderCorrectFeedback'],
+                //     "Wrong": response['totalNumberOfGenderWrongFeedback']
+                // }
+                // drawDoughunt(ctxForGenderPredictionNumber, genderPredictionNumberData, `Gender prediction`)
+
+
+                {#emotion prediction#}
+                let ctxForEmotionPredictionNumber = document.getElementById('numberOfEmotionPredictionChart').getContext('2d');
+                drawVerticalBar(ctxForEmotionPredictionNumber, response['totalNumberOfEmotionPrediction'], "Emotion prediction")
+
+                {#emotion feedback#}
+                let ctxForEmotionFeedback = document.getElementById('numberOfEmotionFeedbackChart').getContext('2d');
+                drawVerticalStackBar(ctxForEmotionFeedback, response['totalNumberOfEmotionCorrectFeedback'], response['totalNumberOfEmotionWrongFeedback'], "Emotion feedback", ['Correct', 'Wrong'])
+            });
+        }
+
+        getTotalPrediction()
+    </script>
+{% endblock %}
