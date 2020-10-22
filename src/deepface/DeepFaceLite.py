@@ -68,12 +68,12 @@ class DeepFaceLite(object):
 				# all_emotions[emotion_label] = '{:.4f}'.format(emotion_prediction)
 				max_score = 100 * np.max(emotion_predictions) / sum_of_predictions
 
-				all_emotions.append('{}: {:.4f}'.format(emotion_label, emotion_prediction))
+				all_emotions.append('{}: {:.1f}%'.format(emotion_label, emotion_prediction))
 
 			emotion = {
 				'all': all_emotions,
 				'dominant': emotion_labels[np.argmax(emotion_predictions)],
-				'dominant_score': '{:.4f}'.format(max_score)
+				'dominant_score': '{:.1f}%'.format(max_score)
 			}
 
 			print(emotion)
