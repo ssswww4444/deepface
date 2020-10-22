@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="au.edu.unimelb.eresearch.happypets">
+    package="au.edu.unimelb.eresearch.happypeople">
 
     <!--  Exclude tablets  -->
     <supports-screens
@@ -31,9 +31,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.PredictResultActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.BreedDetailActivity"
             android:screenOrientation="portrait" />
 
         <provider

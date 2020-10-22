@@ -1,4 +1,4 @@
-package com.example.happypets;
+package com.example.happypeople;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("au.edu.unimelb.eresearch.happypets", appContext.getPackageName());
+        assertEquals("au.edu.unimelb.eresearch.happypeople", appContext.getPackageName());
     }
 }

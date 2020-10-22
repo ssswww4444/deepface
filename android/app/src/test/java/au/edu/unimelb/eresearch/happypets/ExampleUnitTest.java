@@ -1,4 +1,4 @@
-package au.edu.unimelb.eresearch.happypets;
+package au.edu.unimelb.eresearch.happypeople;
 
 import org.junit.Test;
 

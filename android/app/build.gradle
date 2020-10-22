@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "au.edu.unimelb.eresearch.happypets"
+        applicationId "au.edu.unimelb.eresearch.happypeople"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 7
@@ -25,7 +25,7 @@ android {
                     'proguard-rules.pro'
 
             buildConfigField "String", "API_URL",
-                    "\"https://happypet-real-dev.eresearch.unimelb.edu.au\""
+                    "\"https://happypeople-real-dev.eresearch.unimelb.edu.au\""
         }
         release {
             minifyEnabled true
@@ -35,7 +35,7 @@ android {
                     'proguard-rules.pro'
 
             buildConfigField "String", "API_URL",
-                    "\"https://happypet.eresearch.unimelb.edu.au\""
+                    "\"https://happypeople.eresearch.unimelb.edu.au\""
         }
     }
     compileOptions {

@@ -1,2 +1,2 @@
 include ':app', ':ImageViewTouch'
-rootProject.name='HappyPets'
+rootProject.name='HappyPeople'

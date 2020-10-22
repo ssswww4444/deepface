@@ -6,11 +6,6 @@
         android:icon="@drawable/ic_camera"
         android:title="@string/bottom_nav_predict" />
     <item
-        android:id="@+id/tab_breeds"
-        android:enabled="true"
-        android:icon="@drawable/ic_list"
-        android:title="@string/bottom_nav_breeds" />
-    <item
         android:id="@+id/tab_about"
         android:enabled="true"
         android:icon="@drawable/ic_about"
