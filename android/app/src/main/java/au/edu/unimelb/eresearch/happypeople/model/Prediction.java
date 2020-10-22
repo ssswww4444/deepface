@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class Prediction {
     private static final String TAG = "Prediction";
@@ -75,14 +76,14 @@ public class Prediction {
         return "";
     }
 
-    public String getMostLikelyEmotionTitle() {
-        try {
-            return this.emotions.getString("dominant");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
+//    public String getMostLikelyEmotionTitle() {
+//        try {
+//            return this.emotions.getString("dominant");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        return "";
+//    }
 
     public Boolean getAgeFeedbackCorrect() {
         return ageFeedbackCorrect;
@@ -116,15 +117,19 @@ public class Prediction {
 //            json.put("emotionCorrectness", emotionFeedbackCorrect);
 //            json.put("breedFeedback", breedTitle);
 //            json.put("breedCorrectness", breedFeedbackCorrect);
+
             json.put("ageFeedback", age);
             json.put("ageCorrectness", ageFeedbackCorrect);
             json.put("genderFeedback", gender);
             json.put("genderCorrectness", genderFeedbackCorrect);
-            json.put("emotionFeedback", getMostLikelyEmotionTitle());
+            json.put("emotionFeedback", getMostLikelyEmotion());
             json.put("emotionCorrectness", emotionFeedbackCorrect);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        System.out.println(json);
+
         return json;
     }
 }

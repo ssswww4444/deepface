@@ -65,6 +65,7 @@ public class PredictResultActivity extends BaseActivity implements PredictionRVA
         tvAddFeedback = findViewById(R.id.tv_add_feedback);
         tvSendFeedback = findViewById(R.id.tv_send_feedback);
         loadingBar = findViewById(R.id.loading);
+
         containerBtnAddFeedback = findViewById(R.id.container_btn_add_feedback);
         containerBtnSendFeedback = findViewById(R.id.container_btn_send_feedback);
 

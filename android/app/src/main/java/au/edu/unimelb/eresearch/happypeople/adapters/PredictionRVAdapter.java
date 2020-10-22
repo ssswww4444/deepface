@@ -163,7 +163,7 @@ public class PredictionRVAdapter extends RecyclerView.Adapter<PredictionRVAdapte
             }
             this.prediction.setAgeFeedbackCorrect(correct);
             predictFeedbackListener.updatePredictionFeedback(this.prediction.getId(), correct,
-                    prediction.getGenderFeedbackCorrect(), prediction.getEmotionFeedbackCorrect());
+                    this.prediction.getGenderFeedbackCorrect(), this.prediction.getEmotionFeedbackCorrect());
         }
 
         private void setGenderFeedback(boolean correct) {
@@ -179,8 +179,8 @@ public class PredictionRVAdapter extends RecyclerView.Adapter<PredictionRVAdapte
                 btnGenderFeedbackWrong.setColorFilter(ContextCompat.getColor(context, R.color.white));
             }
             this.prediction.setGenderFeedbackCorrect(correct);
-            predictFeedbackListener.updatePredictionFeedback(this.prediction.getId(), prediction.getAgeFeedbackCorrect(),
-                    correct, prediction.getEmotionFeedbackCorrect());
+            predictFeedbackListener.updatePredictionFeedback(this.prediction.getId(), this.prediction.getAgeFeedbackCorrect(),
+                    correct, this.prediction.getEmotionFeedbackCorrect());
         }
 
         private void setEmotionFeedback(boolean correct) {
@@ -196,8 +196,8 @@ public class PredictionRVAdapter extends RecyclerView.Adapter<PredictionRVAdapte
                 btnEmotionFeedbackWrong.setColorFilter(context.getColor(R.color.white));
             }
             this.prediction.setEmotionFeedbackCorrect(correct);
-            predictFeedbackListener.updatePredictionFeedback(this.prediction.getId(), prediction.getAgeFeedbackCorrect(),
-                    prediction.getGenderFeedbackCorrect(), correct);
+            predictFeedbackListener.updatePredictionFeedback(this.prediction.getId(), this.prediction.getAgeFeedbackCorrect(),
+                    this.prediction.getGenderFeedbackCorrect(), correct);
         }
 
         private void toggleFeedback(boolean show) {
