@@ -104,16 +104,18 @@ class StatisticalData(Resource):
                     'feedback_number', 0) + 1
 
                 # age
+                each_age = str(5*math.floor(each_content['ageFeedback'] / 5)) + '+'
+
                 if each_content['ageCorrectness'] == False:
                     statistical_data['feedback_data']['age']['wrong'][
-                        each_content['ageFeedback']] = \
+                        each_age] = \
                         statistical_data['feedback_data']['age'][
-                            'wrong'].get(each_content['ageFeedback'], 0) + 1
+                            'wrong'].get(each_age, 0) + 1
                 else:
                     statistical_data['feedback_data']['age']['correct'][
-                        each_content['ageFeedback']] = \
+                        each_age] = \
                         statistical_data['feedback_data']['age']['correct'].get(
-                            each_content['ageFeedback'], 0) + 1
+                            each_age, 0) + 1
 
                 # gender
                 if each_content['genderCorrectness'] == False:
