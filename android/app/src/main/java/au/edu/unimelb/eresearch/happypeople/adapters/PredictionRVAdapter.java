@@ -126,7 +126,7 @@ public class PredictionRVAdapter extends RecyclerView.Adapter<PredictionRVAdapte
 
             // set data
             this.tvId.setText(Integer.toString(prediction.getId()));
-            this.tvAge.setText(prediction.getAge());
+            this.tvAge.setText(Integer.toString(prediction.getAge()));
             this.tvGender.setText(prediction.getGender());
             this.tvBestEmotion.setText(prediction.getMostLikelyEmotion());
             this.tvAllEmotions.setText(allEmotions);

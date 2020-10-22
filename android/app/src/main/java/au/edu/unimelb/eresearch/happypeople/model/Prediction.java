@@ -10,7 +10,7 @@ public class Prediction {
     private static final String TAG = "Prediction";
 
     private int id = 0;
-    private String age = "";
+    private int age = 0;
     private String gender = "";
     private JSONObject emotions = new JSONObject();
 
@@ -29,7 +29,7 @@ public class Prediction {
     public Prediction(JSONObject prediction) {
         try {
             this.id = prediction.getInt("id");
-            this.age = prediction.getString("age");
+            this.age = prediction.getInt("age");
             this.gender = prediction.getString("gender");
             this.emotions = prediction.getJSONObject("emotion");
         } catch (JSONException e) {
@@ -41,7 +41,7 @@ public class Prediction {
         return id;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
