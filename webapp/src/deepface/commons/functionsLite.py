@@ -138,8 +138,9 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
 
     # drawing settings
     font = ImageFont.truetype(font='font/FiraMono-Medium.otf',
-                        size=np.floor(2e-2 * img.size[1] + 0.5).astype('int32'))
-    thickness = (img.size[0] + img.size[1]) // 300
+                        size=np.floor(4e-2 * img.size[1] + 0.5).astype('int32'))
+    # thickness = (img.size[0] + img.size[1]) // 300
+    thickness = (img.size[0] + img.size[1]) // 250
 
     # # colors
     # hsv_tuples = [(x / 50, 1., 1.)
