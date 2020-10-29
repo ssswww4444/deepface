@@ -41,6 +41,11 @@ class DeepFaceLite(object):
 
 		# preprocess images
 		processed = functionsLite.preprocess_face(img, enforce_detection=enforce_detection, detector_backend=detector_backend)
+
+		# no face detected
+		if processed == False:
+			return img, []  # original img and empty detection
+
 		imgs_224 = processed['processed']
 		emotion_imgs = processed['gray']
 		bbox_img = processed['bbox']

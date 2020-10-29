@@ -221,12 +221,14 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
 
         else:  # if no face detected
 
-            if enforce_detection != True:
-                return pil_img, cv2_img
+            return None, None
 
-            else:
-                raise ValueError(
-                    "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
+            # if enforce_detection != True:
+            #     return pil_img, cv2_img
+
+            # else:
+            #     raise ValueError(
+            #         "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
 
     elif detector_backend == 'ssd':
 
@@ -342,13 +344,15 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
 
         else:  # if no face detected
 
-            if enforce_detection != True:
-                img = base_img.copy()
-                return pil_img, img
+            return None, None
 
-            else:
-                raise ValueError(
-                    "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
+            # if enforce_detection != True:
+            #     img = base_img.copy()
+            #     return pil_img, img
+
+            # else:
+            #     raise ValueError(
+            #         "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
 
     elif detector_backend == 'dlib':
         import dlib  # this is not a must library within deepface. that's why, I didn't put this import to a global level. version: 19.20.0
@@ -409,12 +413,14 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
 
         else:  # if no face detected
 
-            if enforce_detection != True:
-                return pil_img, img
+            return None, None
 
-            else:
-                raise ValueError(
-                    "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
+            # if enforce_detection != True:
+            #     return pil_img, img
+
+            # else:
+            #     raise ValueError(
+            #         "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
 
     elif detector_backend == 'mtcnn':
 
@@ -467,12 +473,15 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
             return pil_img, detected_faces
 
         else:  # if no face detected
-            if enforce_detection != True:
-                return pil_img, img
 
-            else:
-                raise ValueError(
-                    "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
+            return None, None
+
+            # if enforce_detection != True:
+            #     return pil_img, img
+
+            # else:
+            #     raise ValueError(
+            #         "Face could not be detected. Please confirm that the picture is a face photo or consider to set enforce_detection param to False.")
 
     else:
         detectors = ['opencv', 'ssd', 'dlib', 'mtcnn']
@@ -634,6 +643,11 @@ def preprocess_face(base_img, enforce_detection=True, detector_backend='opencv')
     cv2_img = cv2.cvtColor(np.asarray(base_img),cv2.COLOR_RGB2BGR)
     bbox_img, faces = detect_face(img=base_img, detector_backend=detector_backend,
                        enforce_detection=enforce_detection)
+
+    # no face detected
+    if bbox_img == None and faces == None:
+        return False
+
     orig_faces = faces.copy()
 
     # --------------------------
