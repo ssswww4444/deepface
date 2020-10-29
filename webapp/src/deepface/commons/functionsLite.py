@@ -214,7 +214,7 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
                         [tuple(text_origin), tuple(text_origin + label_size)],
                         fill='blue'
                     )
-                    draw.text(text_origin, label, fill=(0, 0, 0), font=font)
+                    draw.text(text_origin, label, fill=(255, 255, 255), font=font)
                 del draw
 
             return pil_img, detected_faces
@@ -336,7 +336,7 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
                         [tuple(text_origin), tuple(text_origin + label_size)],
                         fill='blue'
                     )
-                    draw.text(text_origin, label, fill=(0, 0, 0), font=font)
+                    draw.text(text_origin, label, fill=(255, 255, 255), font=font)
                 del draw
 
 
@@ -404,7 +404,7 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
                         [tuple(text_origin), tuple(text_origin + label_size)],
                         fill='blue'
                     )
-                    draw.text(text_origin, label, fill=(0, 0, 0), font=font)
+                    draw.text(text_origin, label, fill=(255, 255, 255), font=font)
                 del draw
 
 
@@ -467,7 +467,7 @@ def detect_face(img, detector_backend='opencv', enforce_detection=True):
                         [tuple(text_origin), tuple(text_origin + label_size)],
                         fill='blue'
                     )
-                    draw.text(text_origin, label, fill=(0, 0, 0), font=font)
+                    draw.text(text_origin, label, fill=(255, 255, 255), font=font)
                 del draw
 
             return pil_img, detected_faces
