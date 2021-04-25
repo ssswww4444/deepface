@@ -16,3 +16,4 @@ deepface/extendedmodels/__pycache__/*
 deepface/subsidiarymodels/__pycache__/*
 tests/dataset/*.pkl
 *.pyc
+.DS_Store
